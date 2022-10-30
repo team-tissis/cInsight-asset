@@ -18,7 +18,7 @@ def create_json_dict(id, grade):
     json_file.close()
     return
 
-def main(address: str = ""):
+def git_push(address: str = ""):
     create_json_dict(address, 1)
     subprocess.run('git add ./sbt', shell=True)
     subprocess.run('git commit -m "add new sbt metadata"', shell=True)
@@ -26,6 +26,6 @@ def main(address: str = ""):
     return
 
 if __name__=="__main__":
-    main(address)
+    git_push(address)
 
 
