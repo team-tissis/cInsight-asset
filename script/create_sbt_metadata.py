@@ -10,7 +10,7 @@ def create_json_dict(id, grade):
     "name": f"ChainInsight {id}",
     "description": "He/She is one of ChainInsight members.",
     # "external_url": "",
-    "image": "https://github.com/theChainInsight/theChainInsight.github.io/sbt/img/orange/{grade}.gif",
+    "image": f"https://theChainInsight.github.io/sbt/img/orange/{grade}.gif",
     "attributes" :[{"trait_type":"Grade", "value":f"{grade}"}]
     }
     json_file = open(f"./sbt/{id}.json", mode="w")
