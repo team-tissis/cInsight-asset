@@ -17,10 +17,10 @@ def create_json_dict(token_id, red, green, blue):
     "name": f"ChainInsight SkinNFT #{id}",
     "description": "The Skin NFT of ChainInsight.",
     # "external_url": "",
-    "image": f"https://theChainInsight.github.io/nft/img/{token_id}.png",
+    "image": f"https://theChainInsight.github.io/skinnft/img/{token_id}.png",
     "attributes" :[{"trait_type":"red", "value":f"{red}"}, {"trait_type":"red", "value":f"{green}"}, {"trait_type":"red", "value":f"{blue}"}]
     }
-    json_file = open(f"./sbt/{id}.json", mode="w")
+    json_file = open(f"./skinnft/{token_id}.json", mode="w")
     json.dump(json_dict, json_file)
     json_file.close()
     return
