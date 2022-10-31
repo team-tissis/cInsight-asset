@@ -27,10 +27,10 @@ def create_json_dict(token_id, red, green, blue):
 
 def create_bulk_metadata(num):
     for i in range(1,num+1):
-        token_id = format(i, "05")
-        red = (i%4) * 60
-        green = (i%16//4) * 60
-        blue = (i//16) * 60
+        token_id = i
+        red = (i%4) * 84
+        green = (i%16//4) * 84
+        blue = (i//16) * 84
         create_image(token_id, red, green, blue)
         create_json_dict(token_id, red, green, blue)
 
