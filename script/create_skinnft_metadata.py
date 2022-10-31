@@ -14,11 +14,11 @@ def create_image(token_id, red, green, blue):
 
 def create_json_dict(token_id, red, green, blue):
     json_dict = {
-    "name": f"ChainInsight SkinNFT #{id}",
+    "name": f"ChainInsight SkinNFT #{token_id}",
     "description": "The Skin NFT of ChainInsight.",
     # "external_url": "",
     "image": f"https://theChainInsight.github.io/skinnft/img/{token_id}.png",
-    "attributes" :[{"trait_type":"red", "value":f"{red}"}, {"trait_type":"red", "value":f"{green}"}, {"trait_type":"red", "value":f"{blue}"}]
+    "attributes" :[{"trait_type":"red", "value":f"{red}"}, {"trait_type":"green", "value":f"{green}"}, {"trait_type":"blue", "value":f"{blue}"}]
     }
     json_file = open(f"./skinnft/{token_id}.json", mode="w")
     json.dump(json_dict, json_file)
@@ -28,9 +28,9 @@ def create_json_dict(token_id, red, green, blue):
 def create_bulk_metadata(num):
     for i in range(1,num+1):
         token_id = format(i, "05")
-        red = (i%4) * 50
-        green = (i%16//4) * 50
-        blue = (i//16) * 50
+        red = (i%4) * 60
+        green = (i%16//4) * 60
+        blue = (i//16) * 60
         create_image(token_id, red, green, blue)
         create_json_dict(token_id, red, green, blue)
 
