@@ -6,27 +6,16 @@ import web3 as Web3
 address = sys.argv[1]
 
 
-def create_json_dict(id, grade, admin):
-    if admin:
-        json_dict = {
-        "name": f"ChainInsight {id}",
-        "description": "He/She is one of ChainInsight members.",
-        # "external_url": "",
-        "image": f"https://theChainInsight.github.io/sbt/img/orange/{grade}.gif",
-        "attributes" :[{"trait_type":"Grade", "value":f"{grade}"}, {"trait_type":"Position", "value":""}]
-        }
-
-    else:
-        json_dict = {
-        "name": f"ChainInsight {id}",
-        "description": "He/She is one of ChainInsight members.",
-        # "external_url": "",
-        "image": f"https://theChainInsight.github.io/sbt/img/white/{grade}.gif",
-        "attributes" :[{"trait_type":"Grade", "value":f"{grade}"}, {"trait_type":"Position", "value":"Admin"}]
-        }
-
-
-    json_file = open(f"./sbt/{id}.json", mode="w")
+num_color_map = {1: "green", 2: "blue", 3:"pink", 4:"white"}
+def create_json_dict(token_id, grade, icon_num):
+    json_dict = {
+    "name": f"ChainInsight #{token_id}",
+    "description": "He/She is one of ChainInsight members.",
+    # "external_url": "",
+    "image": f"https://theChainInsight.github.io/img/{icon_num}/{grade}.gif",
+    "attributes" :[{"trait_type":"Grade", "value":f"{grade}"}, {"trait_type":"color", "value":f"{num_color_map[icon_num]}"}, {"trait_type":"Position", "value":"Member"}]
+    }
+    json_file = open(f"./sbt/{icon_num}/{grade}/{token_id}", mode="w")
     json.dump(json_dict, json_file)
     json_file.close()
     return
