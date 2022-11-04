@@ -1,45 +1,27 @@
 import subprocess
 import json
 import sys
-import cv2
-import numpy as np
 
-
-def create_image(token_id, red, green, blue):
-    height = 200
-    width = 200
-    blank = np.zeros((height, width, 3))
-    blank += [red, green, blue][::-1]
-    cv2.imwrite(f'./skinnft/img/{token_id}.png',blank)
-
-def create_json_dict(token_id, red, green, blue):
+num_color_map = {1: "green", 2: "blue", 3:"pink", 4:"white"}
+def create_json_dict(token_id):
+    img_id = token_id // 4 + 1
     json_dict = {
     "name": f"ChainInsight SkinNFT #{token_id}",
-    "description": "The Skin NFT of ChainInsight.",
+    "description": "The ChainInsight Skin NFT.",
     # "external_url": "",
-    "image": f"https://theChainInsight.github.io/skinnft/img/{token_id}.png",
-    "attributes" :[{"trait_type":"red", "value":f"{red}"}, {"trait_type":"green", "value":f"{green}"}, {"trait_type":"blue", "value":f"{blue}"}]
+    "image": f"https://theChainInsight.github.io/img/{img_id}/1.gif",
+    "attributes" :[{"trait_type":"color", "value":f"{num_color_map[img_id]}"}]
     }
     json_file = open(f"./skinnft/{token_id}.json", mode="w")
     json.dump(json_dict, json_file)
     json_file.close()
     return
 
-def create_bulk_metadata(num):
-    for i in range(1,num+1):
-        token_id = i
-        red = (i%4) * 84
-        green = (i%16//4) * 84
-        blue = (i//16) * 84
-        create_image(token_id, red, green, blue)
-        create_json_dict(token_id, red, green, blue)
-
-
-
 def main():
-    create_bulk_metadata(50)
+    for i in range(1,5):
+        create_json_dict(i)
     subprocess.run('git add ./skinnft', shell=True)
-    subprocess.run('git commit -m "add new sbt metadata"', shell=True)
+    subprocess.run('git commit -m "update skinnft"', shell=True)
     subprocess.run("git push origin main", shell=True)
     return
 
