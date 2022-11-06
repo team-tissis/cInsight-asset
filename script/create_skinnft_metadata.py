@@ -12,7 +12,7 @@ def create_json_dict(token_id):
     "image": f"https://team-tissis.github.io/cInsightAsset/img/{img_id}/1.gif",
     "attributes" :[{"trait_type":"color", "value":f"{num_color_map[img_id]}"}]
     }
-    json_file = open(f"./skinnft/{token_id}.json", mode="w")
+    json_file = open(f"./skinnft/{token_id}", mode="w")
     json.dump(json_dict, json_file)
     json_file.close()
     return
