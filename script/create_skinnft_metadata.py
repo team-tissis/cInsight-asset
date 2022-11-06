@@ -4,7 +4,7 @@ import sys
 
 num_color_map = {1: "green", 2: "blue", 3:"pink", 4:"white"}
 def create_json_dict(token_id):
-    img_id = token_id // 4 + 1
+    img_id = token_id % 4 + 1
     json_dict = {
     "name": f"ChainInsight SkinNFT #{token_id}",
     "description": "The ChainInsight Skin NFT.",
