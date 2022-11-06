@@ -9,7 +9,7 @@ def create_json_dict(token_id):
     "name": f"ChainInsight SkinNFT #{token_id}",
     "description": "The ChainInsight Skin NFT.",
     # "external_url": "",
-    "image": f"https://team-tissis.github.io/img/{img_id}/1.gif",
+    "image": f"https://team-tissis.github.io/cInsightAsset/img/{img_id}/1.gif",
     "attributes" :[{"trait_type":"color", "value":f"{num_color_map[img_id]}"}]
     }
     json_file = open(f"./skinnft/{token_id}.json", mode="w")

@@ -12,7 +12,7 @@ def create_json_dict(token_id, grade, icon_num):
     "name": f"ChainInsight #{token_id}",
     "description": "He/She is one of ChainInsight members.",
     # "external_url": "",
-    "image": f"https://team-tissis.github.io/img/{icon_num}/{grade}.gif",
+    "image": f"https://team-tissis.github.io/cInsightAsset/img/{icon_num}/{grade}.gif",
     "attributes" :[{"display_type": "number", "trait_type":"Grade", "value":f"{grade}"}, {"trait_type":"color", "value":f"{num_color_map[icon_num]}"}, {"trait_type":"Position", "value":"Member"}]
     }
     json_file = open(f"./sbt/metadata/{icon_num}/{grade}/{token_id}", mode="w")
